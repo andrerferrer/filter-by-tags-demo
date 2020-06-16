@@ -1,7 +1,11 @@
 puts "Create some Restaurants"
 
-Restaurant.create! name: "Amareleen", address: "Gloria"
-Restaurant.create! name: "Verdeen", address: "Gloria"
+amareleen = Restaurant.create! name: "Amareleen", address: "Gloria"
+verdeen = Restaurant.create! name: "Verdeen", address: "Gloria"
+
+amareleen.tags.create name: 'brazilian'
+amareleen.tags.create name: 'dirty'
+verdeen.tags << Tag.first
 
 puts "Let's drink a beer"
 puts %{
