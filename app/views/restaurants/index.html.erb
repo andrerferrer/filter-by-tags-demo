@@ -7,6 +7,10 @@
     <li>
       <%= link_to restaurant.name, restaurant_path(restaurant) %>
       <%= link_to '❌', restaurant, method: :delete, data: { confirm: "Are you sure?" } %>
+      
+      <% restaurant.tags.each do |tag| %>
+        <%= link_to tag.name, restaurants_path(tag_id: tag.id), class: 'badge badge-dark' %>
+      <% end %>
     </li>
   <% end %>
 </ul>

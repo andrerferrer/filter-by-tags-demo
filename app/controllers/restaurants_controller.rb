@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
+    @restaurants = tagged_restaurants(@restaurants) if params[:tag_id]
   end
 
   def show
@@ -30,5 +31,11 @@ class RestaurantsController < ApplicationController
 
   def strong_params
     params.require(:restaurant).permit(Restaurant::STRONG_PARAMS)
+  end
+
+  def tagged_restaurants(restaurants)
+    restaurants.joins(:restaurant_tags)
+               .joins(:tags)
+               .where('tags.id = ?', params[:tag_id])
   end
 end
