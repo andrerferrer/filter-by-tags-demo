@@ -1,6 +1,6 @@
-class CreateRestaurantsTags < ActiveRecord::Migration[6.0]
+class CreateRestaurantTags < ActiveRecord::Migration[6.0]
   def change
-    create_table :restaurants_tags do |t|
+    create_table :restaurant_tags do |t|
       t.references :restaurant, null: false, foreign_key: true
       t.references :tag, null: false, foreign_key: true
 

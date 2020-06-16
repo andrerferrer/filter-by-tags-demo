@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RestaurantsTagTest < ActiveSupport::TestCase
+class RestaurantTagTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

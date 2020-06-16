@@ -5,7 +5,7 @@ class Restaurant < ApplicationRecord
   ]
 
   has_many :reviews
-  has_many :restaurants_tags
-  has_many :tags, through: :restaurants_tags
+  has_many :restaurant_tags
+  has_many :tags, through: :restaurant_tags
 
 end
