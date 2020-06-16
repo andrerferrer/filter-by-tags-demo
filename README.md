@@ -39,5 +39,31 @@ In the RestaurantTag model we need to add:
   validates_uniqueness_of :restaurant, scope: [:tag]
 ```
 
+### 2. Create the filter
+
+In the view, add this:
+```erb
+<% restaurant.tags.each do |tag| %>
+  <%= link_to tag.name, restaurants_path(tag_id: tag.id), class: 'badge badge-dark' %>
+<% end %>
+```
+
+In the controller, add this:
+```ruby
+  def index
+    @restaurants = Restaurant.all
+    @restaurants = tagged_restaurants(@restaurants) if params[:tag_id]
+  end
+
+  private
+
+  def tagged_restaurants(restaurants)
+    restaurants.joins(:restaurant_tags)
+               .joins(:tags)
+               .where('tags.id = ?', params[:tag_id])
+  end  
+```
+
+
 And we're good to go 🤓
 Good Luck and Have Fun
