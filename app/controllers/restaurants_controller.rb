@@ -34,6 +34,6 @@ class RestaurantsController < ApplicationController
 
   def tagged_restaurants
     Restaurant.joins(:restaurant_tags)
-              .where(restaurant_tags: { tag_id: param[:tag_id] })
+              .where(restaurant_tags: { tag_id: params[:tag_id] })
   end
 end
